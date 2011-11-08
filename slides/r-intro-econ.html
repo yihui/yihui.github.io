@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<!--
+  Original Project, HTML5 Rocks 'Slides Template' Copyright 2010 Google Inc.
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+ 
+     http://www.apache.org/licenses/LICENSE-2.0
+ 
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ 
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+                 Brad Neuberg
+
+  Keydown generates an HTML5 Rocks-style presentation from a Markdown file, adding
+  the ability to full screen backgrounds, CSS overrides, and additional JavaScript.
+
+  Keydown (http://infews.github.com/keydown), Copyright 2010 Infews LLC
+-->
+<html manifest="cache.manifest">
+<head>
+  <!--[if gte IE 9]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"/>
+  <![endif]-->
+
+  <meta charset="utf-8"/>
+  <title>r-intro-econ</title>
+  <link href="http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Permanent+Marker|Lobster|Ruslan+Display" rel="stylesheet" type="text/css"/>
+
+  <!--
+    Original HTML5 Rocks CSS extracted for readability
+  -->
+  <link href="css/rocks.css" rel="stylesheet" type="text/css"/>
+
+  <!--
+    Keydown provided CSS & your custom CSS
+  -->
+  
+    <link href="css/keydown.css" rel="stylesheet" type="text/css"/>
+  
+    <link href="css/syntax_highlighting.css" rel="stylesheet" type="text/css"/>
+  
+    <link href="css/custom.css" rel="stylesheet" type="text/css"/>
+  
+    <link href="css/r-dev-lessons.css" rel="stylesheet" type="text/css"/>
+  
+
+</head>
+<body>
+<div class="presentation">
+  <div id="presentation-counter"></div>
+  <div class="slides">
+    <!--
+      First slide has Title, Instructions & options. Remove (or display:none) this slide if you like
+    -->
+    <div class="slide">
+      <section class="middle">
+        <h1>r-intro-econ</h1>
+
+        <p>
+          Press <span class="key"><b>&rarr;</b></span>, scroll, or swipe to advance
+        </p>
+
+        <h3>
+          Options
+        </h3>
+        <ul>
+          <li>
+            <input type="checkbox" id="toggle-size"/>
+            <label for="toggle-size">
+              <span>Grow</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="toggle-transitions" checked/>
+            <label for="toggle-transitions">
+              <span>Transitions</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="toggle-gradients" checked/>
+            <label for="toggle-gradients">
+              <span>Gradients</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" id="toggle-counter" checked/>
+            <label for="toggle-counter">
+              <span>Slide numbers</span>
+            </label>
+          </li>
+        </ul>
+        <p>
+          Made with <a href="http://infews.github.com/keydown"><b>Keydown</b></a>
+        </p>
+        <p>
+          <a href="http://www.w3.org/html/logo/">
+            <img src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-graphics-semantics.png" width="197" height="64" alt="HTML5 Powered with CSS3 / Styling, Graphics, 3D &amp; Effects, and Semantics" title="HTML5 Powered with CSS3 / Styling, Graphics, 3D &amp; Effects, and Semantics">
+          </a>
+        </p>
+      </section>
+    </div>
+    
+      <div class="slide">
+  <section class="middle">
+    <h1>An Introduction to R</h1>
+
+<hr />
+
+<p><img src="http://www.r-project.org/Rlogo.jpg" alt="R" /></p>
+
+<h2><a href="http://yihui.name">Yihui Xie</a></h2>
+
+<p>Department of Statistics, Iowa State University<br/>
+Econ workshops on R</p>
+
+<p>Nov 8, 2011</p>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Outline</h1>
+
+<ul>
+<li>What is R</li>
+<li>Computing
+
+<ul>
+<li>grammar</li>
+<li>data manipulation</li>
+<li>simulation</li>
+<li>modelling</li>
+</ul>
+</li>
+<li>Graphics
+
+<ul>
+<li>base graphics</li>
+<li>ggplot2</li>
+</ul>
+</li>
+<li>Other useful stuff
+
+<ul>
+<li>debugging</li>
+<li>3D plots, animations, interactive graphics</li>
+</ul>
+</li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide full-background dragon">
+  <section class="dark middle">
+    <h1>Ready?</h1>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="middle">
+    <h1>PART I</h1>
+
+<p>Nov 8, 2011</p>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="middle">
+    <h1>R is the language for statistical computing and graphics (and more)</h1>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Examples of using R for statistics</h1>
+
+<ul>
+<li>I write homework solutions with R: <a href="https://github.com/yihui/stat579/downloads">https://github.com/yihui/stat579/downloads</a></li>
+<li><a href="http://gitorious.org/xie/homework/blobs/raw/f674bfe3bc498e81b9b54fa24b5ec2fba48e3291/Stat503/Assign3/Stat503-Assignment3-Yihui-Xie.pdf">I write my own homework with R</a></li>
+<li>I play with distributions in R: <a href="http://yihui.name/en/2010/04/demonstrating-the-power-of-f-test-with-gwidgets/">http://yihui.name/en/2010/04/demonstrating-the-power-of-f-test-with-gwidgets/</a></li>
+<li>I grab datasets from webpages using R: <a href="http://yihui.name/en/2010/10/grabbing-tables-in-webpages-using-the-xml-package/">http://yihui.name/en/2010/10/grabbing-tables-in-webpages-using-the-xml-package/</a></li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>More examples</h1>
+
+<ul>
+<li>I set fireworks with R: <a href="http://yihui.name/en/2011/01/happy-new-year-with-r-2011-fireworks/">http://yihui.name/en/2011/01/happy-new-year-with-r-2011-fireworks/</a></li>
+<li>I play mine sweeper with R: <a href="http://yihui.name/en/2011/08/the-fun-package-use-r-for-fun/">http://yihui.name/en/2011/08/the-fun-package-use-r-for-fun/</a></li>
+<li>...</li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Comparison with other languages</h1>
+
+<ul>
+<li>oriented to statistics (<code>mean()</code>, <code>var()</code>, <code>lm()</code>, <code>glm()</code>, <code>rnorm()</code>, <code>boxplot()</code>, ...)</li>
+<li>heavily vectorized (very important! can avoid loops in many, many cases)</li>
+<li>object-oriented, but in different forms (no <code>obj.method()</code>, but often <code>method(obj)</code>)</li>
+<li>unbeatable number of packages (~3400 now)</li>
+<li>free (in both senses of beer and freedom)</li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Setting up</h1>
+
+<ul>
+<li>Download: <a href="http://cran.r-project.org">http://cran.r-project.org</a> (you may choose the Iowa State mirror)
+
+<ul>
+<li>three major platforms (Win, Linux, Mac)</li>
+</ul>
+</li>
+<li>Editor? RStudio may be a good choice (alternatives: Notepad++/NppToR, Emacs/ESS, Eclipse/StatET, ...)
+
+<ul>
+<li>anything but Notepad under Windows</li>
+</ul>
+</li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide full-background rstudio-web">
+  <section>
+    
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="middle">
+    <h1>Getting help</h1>
+
+<h2>use the question mark <code>?</code> to read documentation</h2>
+
+<p>e.g. try <code>?lm</code> for help on linear models</p>
+
+<h2>or <code>help.start()</code> for a view on the whole package</h2>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Install add-on packages</h1>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="c">## use install.packages(), e.g.</span>
+install.packages(<span class="s"><span class="dl">'</span><span class="k">animation</span><span class="dl">'</span></span>)</pre></div>
+</div>
+
+
+<p>You will be asked to choose a mirror.</p>
+
+<p>Too many packages?? Use the task view: <a href="http://cran.r-project.org/web/views/">http://cran.r-project.org/web/views/</a> (e.g. Econometrics)</p>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="middle">
+    <h1>R is still being actively updated</h1>
+
+<h2>no easy way to update R with a menu or command; have to uninstall old version and install new version manually</h2>
+
+<h2>easy to update packages: <code>update.packages()</code></h2>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Grammar: simple calculations</h1>
+
+<ul>
+<li>assignment by <code>&lt;-</code> or <code>=</code> (experts recommend the former but I do not believe them)</li>
+<li><code>?Arithmetic</code> (e.g. <code>x+y</code>, <code>x %% y</code>)</li>
+<li>indexing by <code>[]</code></li>
+</ul>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>x &lt;- <span class="i">10</span>
+y &lt;- <span class="i">15</span>:<span class="i">3</span>
+
+<span class="i">1</span> + <span class="i">2</span>
+<span class="i">11</span> %<span class="s"><span class="dl">% </span><span class="k">2
+11</span><span class="dl"> </span></span>%<span class="rx"><span class="dl">/</span><span class="k">% 2
+3^4
+log(10)
+
+y[4]
+y[-1]  # what do negative indices mean?</span></span></pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Grammar: functions</h1>
+
+<ul>
+<li><code>function_name(arguments)</code></li>
+</ul>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>z = rnorm(<span class="i">100</span>)
+fivenum  <span class="c"># what are the arguments of this function?</span>
+
+fivenum(z)
+
+fivenum(x = z, na.rm = <span class="co">TRUE</span>)
+
+fivenum(z, <span class="co">TRUE</span>)</pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Grammar: conditions and loops</h1>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="c">## the if-else statement</span>
+<span class="r">if</span> (<span class="co">TRUE</span>) {
+  print(<span class="i">1</span>)
+} <span class="r">else</span> {
+  print(<span class="i">2</span>)
+}
+
+<span class="c">## a for-loop (the other type is while-loop)</span>
+s = <span class="i">0</span>; x = c(<span class="i">4</span>, <span class="i">2</span>, <span class="i">6</span>)
+<span class="r">for</span> (i <span class="r">in</span> <span class="i">1</span>:<span class="i">3</span>) {
+  s = s + x[i]
+}
+s
+<span class="c">## the above loop is the most stupid thing to do in R</span></pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Work with data</h1>
+
+<ul>
+<li>a series of functions like <code>read.table()</code>, <code>read.csv()</code>, ...</li>
+<li>can work with databases too (need add-on packages like RODBC, RMySQL, ...)</li>
+</ul>
+
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="c">## the tips data</span>
+tips = read.csv(<span class="s"><span class="dl">'</span><span class="k">http://www.public.iastate.edu/~dicook/Army/tips.csv</span><span class="dl">'</span></span>)
+
+str(tips)  <span class="c"># structure of an object; one of the most useful function in R</span>
+
+summary(tips)
+mean(tips<span class="gv">$bill</span>)  <span class="c"># index by $name</span>
+var(tips[, <span class="s"><span class="dl">'</span><span class="k">tip</span><span class="dl">'</span></span>])  <span class="c"># index by character name</span>
+table(tips[, <span class="i">4</span>])  <span class="c"># index by column number</span>
+
+hist(tips<span class="gv">$bill</span>)
+boxplot(tip~sex, data=tips)
+plot(tip~bill, data=tips, col=as.integer(tips<span class="gv">$sex</span>))</pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>Other types of data objects</h1>
+
+<ul>
+<li>vector</li>
+<li>matrix, array</li>
+<li>list (very flexible; perhaps second most widely used)</li>
+<li>...</li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Simulation</h1>
+
+<h2>you know the process, but the input is random</h2>
+
+<p>A family of functions for distributions: <code>dfun()</code>, <code>pfun()</code>, <code>qfun()</code> and <code>rfun()</code></p>
+
+<p>For example, <code>rnorm()</code></p>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>A simulation of fire flames</h1>
+
+<div class="CodeRay">
+  <div class="code"><pre>  library(animation)
+  demo(<span class="s"><span class="dl">'</span><span class="k">fire</span><span class="dl">'</span></span>, ask = <span class="co">FALSE</span>)  <span class="c"># an application of image()</span></pre></div>
+</div>
+
+
+
+
+<p align="center"><img src="images/fire.gif" /></p>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Another example with more scientific flavor</h1>
+
+<p>Q: How many times do we need to flip the coin until we get a sequence of HTH and HTT respectively? (For example, for the sequence H<em>HTH</em>, the number for HTH to appear is 4, and in THT<em>HTT</em>, the number for HTT is 6.)</p>
+
+<p>A: <a href="http://yihui.name/en/2009/08/counterintuitive-results-in-flipping-coins/">http://yihui.name/en/2009/08/counterintuitive-results-in-flipping-coins/</a></p>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Modelling: linear regression</h1>
+
+<p>Take the tips data for example</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>fit1 = lm(tip ~ bill, data = tips)
+summary(fit1)</pre></div>
+</div>
+
+
+<p>You get</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="co">Call</span>:
+lm(formula = tip ~ bill, data = tips)
+
+<span class="co">Residuals</span>:
+    <span class="co">Min</span>      <span class="i">1</span><span class="co">Q</span>  <span class="co">Median</span>      <span class="i">3</span><span class="co">Q</span>     <span class="co">Max</span> 
+<span class="fl">-3.1982</span> -<span class="fl">0.5652</span> -<span class="fl">0.0974</span>  <span class="fl">0.4863</span>  <span class="fl">3.7434</span> 
+
+<span class="co">Coefficients</span>:
+            <span class="co">Estimate</span> <span class="co">Std</span>. <span class="co">Error</span> t value Pr(&gt;|t|)    
+(<span class="co">Intercept</span>) <span class="fl">0.920270</span>   <span class="fl">0.159735</span>   <span class="fl">5.761</span> <span class="fl">2.53e-08</span> ***
+bill        <span class="fl">0.105025</span>   <span class="fl">0.007365</span>  <span class="fl">14.260</span>  &lt; <span class="fl">2e-16</span> ***
+---
+<span class="co">Signif</span>. codes:  <span class="i">0</span> ‘***’ <span class="fl">0.001</span> ‘**’ <span class="fl">0.01</span> ‘*’ <span class="fl">0.05</span> ‘.’ <span class="fl">0.1</span> ‘ ’ <span class="i">1</span> 
+
+<span class="co">Residual</span> standard <span class="ke">error</span>: <span class="fl">1.022</span> on <span class="i">242</span> degrees of freedom
+<span class="co">Multiple</span> <span class="co">R</span>-<span class="ke">squared</span>: <span class="fl">0.4566</span>,        <span class="co">Adjusted</span> <span class="co">R</span>-<span class="ke">squared</span>: <span class="fl">0.4544</span> 
+<span class="co">F</span>-<span class="ke">statistic</span>: <span class="fl">203.4</span> on <span class="i">1</span> <span class="r">and</span> <span class="i">242</span> <span class="co">DF</span>,  p-<span class="ke">value</span>: &lt; <span class="fl">2.2e-16</span> </pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Modelling: the formula</h1>
+
+<p>The formula is an important component of many R functions for modelling.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>fit2 = lm(tip ~ bill + sex, data = tips)  <span class="c"># two variables</span>
+
+fit3 = lm(tip ~ bill + <span class="i">0</span>, data = tips)  <span class="c"># without intercept</span>
+
+<span class="c">## you try summary() on them</span></pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="middle">
+    <h1>PART II</h1>
+
+<p>Nov 16, 2011</p>
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>animation: Nothing but a series of plots</h1>
+
+<div class="CodeRay">
+  <div class="code"><pre>  <span class="c">## rotate the word 'Animation'</span>
+  <span class="r">for</span> (i <span class="r">in</span> <span class="i">1</span>:<span class="i">360</span>) {
+    plot(<span class="i">1</span>, ann = <span class="co">FALSE</span>, type = <span class="s"><span class="dl">&quot;</span><span class="k">n</span><span class="dl">&quot;</span></span>, axes = <span class="co">FALSE</span>)
+    text(<span class="i">1</span>, <span class="i">1</span>, <span class="s"><span class="dl">&quot;</span><span class="k">Animation</span><span class="dl">&quot;</span></span>, 
+      srt = i, col = rainbow(<span class="i">360</span>)[i], cex = <span class="i">7</span> * i/<span class="i">360</span>)
+    <span class="co">Sys</span>.sleep(<span class="fl">0.01</span>)
+  } </pre></div>
+</div>
+
+
+
+
+<p align="center"><img src="images/animation-rotation.gif" width=300 /></p>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="bulleted">
+    <h1>formatR: Computing on the Code</h1>
+
+<ul>
+<li>R can compute on its own code: <code>parse()</code> and <code>deparse()</code></li>
+<li>the <a href="http://github.com/yihui/formatR/wiki"><strong>formatR</strong></a> package uses the side effect of them to reformat R code</li>
+<li>you give me <code>1+1</code> and I return you <code>1 + 1</code> (what the heck is the difference?)</li>
+</ul>
+
+
+<p>well, compare</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="r">for</span>(k <span class="r">in</span> <span class="i">1</span>:<span class="i">10</span>){j=cos(sin(k)*k^<span class="i">2</span>)+<span class="i">3</span>;print(j-<span class="i">5</span>)}</pre></div>
+</div>
+
+
+<p>to</p>
+
+<div class="CodeRay">
+  <div class="code"><pre><span class="r">for</span> (k <span class="r">in</span> <span class="i">1</span>:<span class="i">10</span>) {
+    j = cos(sin(k) * k^<span class="i">2</span>) + <span class="i">3</span>
+    print(j - <span class="i">5</span>)
+} </pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section class="middle">
+    
+
+<object width="600" height="619"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=30173477&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=30173477&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="600" height="619"></embed></object>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide full-background constructocat">
+  <section>
+    <h1>Thanks!</h1>
+
+<ul>
+<li><a href="https://github.com/yihui">https://github.com/yihui</a></li>
+</ul>
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+  </div>
+</div>
+
+<!--
+  Original HTML5 Rocks JavaScript extracted for readability
+-->
+<script src="js/rocks.js" type="text/javascript"></script>
+
+<!--[if lt IE 9]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({ mode: "overlay" });</script>
+<![endif]-->
+
+<!--
+  Keydown puts your custom JS here
+-->
+
+  <script src="js/custom.js" type="text/javascript"></script>
+
+
+</body>
+</html>

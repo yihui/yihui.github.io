@@ -11,12 +11,56 @@ section.bulleted ul {
   background-position: center;
 }
 
-.dragon {
-  background-image: url(../images/dragon.jpg);
+.scattered-leaves {
+  background-image: url(../images/scattered-leaves.jpg);
+}
+
+.terminal {
+  background-image: url(../images/terminal.png);
 }
 
 .rstudio-web {
   background-image: url(../images/rstudio-web.png);
+}
+
+.steve-jobs {
+  background-image: url(../images/steve-jobs.jpg);
+}
+
+.bicycle-route {
+  background-image: url(../images/bicycle-route.jpg);
+}
+
+.error-message {
+  background-image: url(../images/error-message.png);
+}
+
+.interface-old {
+  background-image: url(../images/interface-old.png);
+}
+
+.interface-new {
+  background-image: url(../images/interface-new.png);
+}
+
+.inferno {
+  background-image: url(../images/inferno.jpg);
+}
+
+.grim-repo {
+  background-image: url(../images/grim-repo.jpg);
+}
+
+.poptocat {
+  background-image: url(../images/poptocat.jpg);
+}
+
+.bear-cavalry {
+  background-image: url(../images/bear-cavalry.jpg);
+}
+
+.dragon {
+  background-image: url(../images/dragon.jpg);
 }
 
 .constructocat {
