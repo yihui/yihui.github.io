@@ -23,6 +23,13 @@ pre {
 .bulleted li {
   padding-top: 30px;
 }
+.bulleted ul ul {
+  padding-top: 10px;
+  font-size: 80%;
+}
+.bulleted li li {
+  padding-top: 5px;
+}
 .dark {
   color: #FFFFFF;
 }
