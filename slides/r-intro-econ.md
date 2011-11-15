@@ -41,7 +41,7 @@ Nov 8, 2011
 
 !SLIDE middle
 
-# PART I
+# PART I: Basics and computation
 
 Nov 8, 2011
 
@@ -189,7 +189,7 @@ s
 
 ``` ruby
 ## the tips data
-tips = read.csv('http://www.public.iastate.edu/~dicook/Army/tips.csv')
+tips = read.csv('http://dicook.public.iastate.edu/Army/tips.csv')
 
 str(tips)  # structure of an object; one of the most useful function in R
 
@@ -290,13 +290,246 @@ fit3 = lm(tip ~ bill + 0, data = tips)  # without intercept
 
 !SLIDE middle
 
-# PART II
+# PART II: Graphics and more
 
-Nov 16, 2011
+Nov 15, 2011
 
 !SLIDE
 
-# animation: Nothing but a series of plots
+Before we get started, let's see if you can install the `gWidgetsRGtk2` package:
+
+``` ruby
+install.packages('gWidgetsRGtk2')
+library(gWidgetsRGtk2)
+## follow instructions in case of errors
+```
+
+!SLIDE bulleted
+
+# Two graphics systems in R
+
+- base graphics
+  - the `graphics` package
+  - once drawn, no way to modify it again (have to redraw everything)
+  - functions to draw points, lines, polygons, ... like other languages
+- grid graphics
+  - the `grid` package
+  - more object-oriented: graphical elements are objects
+  - can be modified without explicitly redraw the whole plot
+
+!SLIDE bulleted
+
+# Add-on packages for graphics
+
+There are many add-on packages based on the two systems; see the Graphics task view on CRAN for an overview: <http://cran.r-project.org/web/views/Graphics.html>
+
+- `lattice`: Trellis plots
+  - sub-plots conditional on categorical variables
+  - shipped with R (use `library(lattice)`)
+- `ggplot2`: Grammar of Graphics
+  - a truly masterpiece
+  - amazing abstraction
+  - <http://had.co.nz/ggplot2>
+  - have to install: `install.packages('ggplot2')`
+
+!SLIDE
+
+# Examples of base graphics
+
+Last week we mentioned the tips data.
+
+``` ruby
+tips = read.csv('http://dicook.public.iastate.edu/Army/tips.csv')
+str(tips)
+
+## scatter plot: positive correlation with a 'constraint'
+plot(tip ~ bill, data = tips)
+## what is the problem with R's default choice of point shapes?
+
+## plot() is a very 'tricky' function in R; details later
+
+hist(tips$tip, main = 'histogram of tips')
+## you see nothing except a right-skewed distribution
+
+hist(tips$tip, breaks = 30)  # more bins
+
+hist(tips$tip, breaks = 100) # what do you see now?
+```
+
+20-30 years ago, the research on choosing the histogram binwidth was extremely hot in statistics, but... who cares?
+
+!SLIDE
+
+# A trivial example of interactive graphics
+
+We can change the binwidth interactively in R via many tools; one possibility is to build a GUI
+
+``` ruby
+## I prefer gWidgetsRGtk2, but I do not know if you can install it
+## gWidgetstcltk is easier to install
+if (!require('gWidgetstcltk')) install.packages('gWidgetstcltk')
+library(gWidgetstcltk)  # or library(gWidgetsRGtk2)
+options(guiToolkit = 'tcltk')  # or options(guiToolkit = 'RGtk2')
+
+x = tips$tip
+gslider(from = 1, to = 100, by = 1,
+        container = gwindow('Change the number of bins'),
+        handler = function(h, ...) {
+            hist(x, breaks = seq(min(x), max(x),
+                    length = svalue(h$obj)))
+        })
+
+## many many other GUI elements to use
+```
+
+!SLIDE
+
+# Play with colors
+
+There are many color models in R, like `rgb()`, `hsv()`, ... And there are built-in color names, e.g. `'red'`, `'purple'`. Here is an example of `rgb()`
+
+``` ruby
+rgb(1, 0, 0)  # red (hexidecimal representation)
+rgb(1, 1, 0)  # yellow
+
+## an interactive example
+g = ggroup(horizontal = FALSE, container = gwindow('Color Mixer'))
+x = c(0,0,0)  # red, green, blue
+for(i in 1:3) {
+    gslider(from = 0, to = 1, by = 0.05, action = i,
+            handler = function(h, ...) {
+                x[h$action] <<- svalue(h$obj)
+                par(bg = rgb(x[1], x[2], x[3]), mar = rep(0, 4))
+                plot.new()
+            }, container = g)
+}
+
+colors()  # all names you can use
+plot(rnorm(30), pch = 19, col = sample(colors(), 30), cex = 2)
+```
+
+!SLIDE bulleted
+
+# Other plots in base graphics system
+
+Old-fashioned but many goodies...
+
+- open `help.start()` and take a look at the `graphics` package
+- all you need to learn about base graphics is there
+- many types of plots of interest: `contour()`, `filled.contour()`, `fourfoldplot()`, `mosaicplot()`, `pairs()`, `smoothScatter()`, `stripchart()`, `sunflowerplot()`, `symbols()`
+
+!SLIDE bulleted
+
+# Some comments
+
+Graphics are not as easy as you might have imagined
+
+- avoid pie charts (why?)
+- avoid 3D plots (what?!)
+  - unless it is interactive (e.g. the `rgl` package)
+  - an alternative is the contour plot
+- consider color-blinded people
+
+!SLIDE middle
+
+# trend of vertical difference between two curves
+
+}}} images/vertical-difference.png
+
+!SLIDE
+
+# Luke, use the source!
+
+Only the source code is real.
+
+``` ruby
+x = seq(.1, 10, .1)
+plot(x, 1/x, type = 'l', lwd = 2)
+lines(x, 1/x + 2, col = 'red', lwd = 2)
+```
+
+<http://youtu.be/2LTsvOHq3xc>
+
+!SLIDE middle dark
+
+# Life is short, use ggplot2!
+
+}}} images/inferno.jpg
+
+!SLIDE bulleted
+
+# Why ggplot2?
+
+- you have to wrestle with gory details in base graphics
+  - yes, it is flexible
+  - but you have to take care of everything
+  - point symbols, colors, line types, line width, legend, ...
+- common tasks in graphics
+  - color the points according to the `sex` variable
+  - different point symbols denote the `smoker` variable
+  - darker points denote larger parties (the `size` variable)
+  - add a smoothing/regression line on a scatter plot
+  - ...
+
+!SLIDE
+
+# Simple ggplot2 examples
+
+We still use the `tips` data here.
+
+``` ruby
+library(ggplot2)
+## different colors denote the sex variable
+qplot(bill, tip, data = tips, color = sex)
+
+## point symbols
+qplot(bill, tip, data = tips, shape = smoker)
+
+## you can manipulate ggplot2 objects
+p = qplot(bill, tip, data = tips, color = size)
+p
+
+## do not like the color scheme? change it
+p + scale_colour_gradient2(low="white", high="blue")
+
+## faceting
+qplot(tip, data = tips, facets = time ~ day)
+
+p + geom_smooth() # smoothing line
+```
+
+!SLIDE bulleted
+
+# More examples in ggplot2 website
+
+Unlike most of R packages, ggplot2 has its own website of documentation, which is a rich source of examples.
+
+- boxplots: <http://had.co.nz/ggplot2/geom_boxplot.html>
+- contours: <http://had.co.nz/ggplot2/stat_contour.html>
+- hexagons: <http://had.co.nz/ggplot2/stat_binhex.html>
+- Pac man chart: <http://had.co.nz/ggplot2/coord_polar.html>
+
+!SLIDE bulleted
+
+# Other packages on graphics
+
+As mentioned before, there are many other packages based on the two graphics systems.
+
+- `animation`: a gallery of statistical animations and tools to export animations
+- `rgl`: interactive 3D plots
+- `iplots`: interactive statistical graphics
+- `rggobi`: connect R with GGobi (a standalone software package for interactive stat graphics)
+
+``` ruby
+## be prepared
+install.packages(c('animation', 'rgl', 'iplots'))
+```
+
+!SLIDE
+
+# The animation package
+
+The idea is simple:
 
 ``` ruby
     ## rotate the word 'Animation'
@@ -310,6 +543,53 @@ Nov 16, 2011
 
 <p align="center"><img src="images/animation-rotation.gif" width=300 /></p>
 
+!SLIDE
+
+# animation examples
+
+``` ruby
+library(animation)
+
+?brownian.motion
+
+?quincunx
+
+?grad.desc
+
+## export to an HTML page
+?saveHTML
+
+## want more hilarious examples? try
+demo('busybees')
+
+demo('CLEvsLAL')
+```
+
+!SLIDE
+
+# rgl and iplots
+
+Play with statistical graphics.
+
+``` ruby
+## use your mouse (drag or wheel up/down)
+library(rgl)
+demo('rgl')
+
+## an artificial dataset
+library(animation)
+demo('pollen')
+
+## linked plots
+library(iplots)
+ibar(tips$sex)
+ihist(tips$tip)
+```
+
+!SLIDE middle
+
+<object width="600" height="619"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=30173477&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=30173477&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="600" height="619"></embed></object>
+<http://vimeo.com/30173477>
 
 !SLIDE bulleted
 
@@ -333,11 +613,6 @@ for (k in 1:10) {
     print(j - 5)
 } 
 ```
-
-
-!SLIDE middle
-
-<object width="600" height="619"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=30173477&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=30173477&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="600" height="619"></embed></object>
 
 !SLIDE
 

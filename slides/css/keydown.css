@@ -19,6 +19,14 @@ section.bulleted ul {
   background-image: url(../images/rstudio-web.png);
 }
 
+.vertical-difference {
+  background-image: url(../images/vertical-difference.png);
+}
+
+.inferno {
+  background-image: url(../images/inferno.jpg);
+}
+
 .constructocat {
   background-image: url(../images/constructocat.jpg);
 }
