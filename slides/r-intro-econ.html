@@ -725,6 +725,7 @@ library(gWidgetsRGtk2)
 <li>the <code>graphics</code> package</li>
 <li>once drawn, no way to modify it again (have to redraw everything)</li>
 <li>functions to draw points, lines, polygons, ... like other languages</li>
+<li>many built-in types of plots (histogram, boxplot, bar chart, ...)</li>
 </ul>
 </li>
 <li>grid graphics
@@ -733,6 +734,7 @@ library(gWidgetsRGtk2)
 <li>the <code>grid</code> package</li>
 <li>more object-oriented: graphical elements are objects</li>
 <li>can be modified without explicitly redraw the whole plot</li>
+<li>more like an infrastructure package (no built-in plot types)</li>
 </ul>
 </li>
 </ul>
@@ -758,7 +760,7 @@ library(gWidgetsRGtk2)
 
 <ul>
 <li>sub-plots conditional on categorical variables</li>
-<li>shipped with R (use <code>library(lattice)</code>)</li>
+<li>shipped with R (no need to install; just <code>library(lattice)</code>)</li>
 </ul>
 </li>
 <li><code>ggplot2</code>: Grammar of Graphics
@@ -925,11 +927,17 @@ plot(rnorm(<span class="i">30</span>), pch = <span class="i">19</span>, col = sa
 <li>avoid 3D plots (what?!)
 
 <ul>
-<li>unless it is interactive (e.g. the <code>rgl</code> package)</li>
+<li>unless they are interactive (e.g. the <code>rgl</code> package)</li>
 <li>an alternative is the contour plot</li>
 </ul>
 </li>
-<li>consider color-blinded people</li>
+<li>consider color-blind people</li>
+<li>The Elements of Graphing Data (William S Cleveland)
+
+<ul>
+<li>order of precision (length good; angle bad; ...)</li>
+</ul>
+</li>
 </ul>
 
 
@@ -1194,12 +1202,15 @@ demo(<span class="s"><span class="dl">'</span><span class="k">CLEvsLAL</span><sp
 <p>Play with statistical graphics.</p>
 
 <div class="CodeRay">
-  <div class="code"><pre>library(rgl)
+  <div class="code"><pre><span class="c">## use your mouse (drag or wheel up/down)</span>
+library(rgl)
 demo(<span class="s"><span class="dl">'</span><span class="k">rgl</span><span class="dl">'</span></span>)
 
+<span class="c">## an artificial dataset</span>
 library(animation)
 demo(<span class="s"><span class="dl">'</span><span class="k">pollen</span><span class="dl">'</span></span>)
 
+<span class="c">## linked plots</span>
 library(iplots)
 ibar(tips<span class="gv">$sex</span>)
 ihist(tips<span class="gv">$tip</span>)</pre></div>
@@ -1260,6 +1271,41 @@ ihist(tips<span class="gv">$tip</span>)</pre></div>
     j = cos(sin(k) * k^<span class="i">2</span>) + <span class="i">3</span>
     print(j - <span class="i">5</span>)
 } </pre></div>
+</div>
+
+
+
+
+  </section>
+  <div class="attribution hidden">
+    <a href="">
+      
+    </a>
+  </div>
+</div>
+
+    
+      <div class="slide">
+  <section>
+    <h1>Debugging</h1>
+
+<p>The function <code>debug</code> can be used to debug a function.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>f = function(x) {
+    m = length(x)
+    x[is.na(x)] = mean(x, na.rm = <span class="co">TRUE</span>)  <span class="c"># impute by mean</span>
+    s = sum(x^<span class="i">2</span>)  <span class="c"># sum of squares</span>
+    s
+}
+f(c(<span class="i">1</span>, <span class="co">NA</span>, <span class="i">2</span>))
+
+<span class="c">## begin to debug the function now</span>
+debug(f)
+
+f(c(<span class="i">1</span>, <span class="co">NA</span>, <span class="i">2</span>))
+
+undebug(f)</pre></div>
 </div>
 
 

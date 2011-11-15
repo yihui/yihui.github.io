@@ -312,10 +312,12 @@ library(gWidgetsRGtk2)
   - the `graphics` package
   - once drawn, no way to modify it again (have to redraw everything)
   - functions to draw points, lines, polygons, ... like other languages
+  - many built-in types of plots (histogram, boxplot, bar chart, ...)
 - grid graphics
   - the `grid` package
   - more object-oriented: graphical elements are objects
   - can be modified without explicitly redraw the whole plot
+  - more like an infrastructure package (no built-in plot types)
 
 !SLIDE bulleted
 
@@ -325,7 +327,7 @@ There are many add-on packages based on the two systems; see the Graphics task v
 
 - `lattice`: Trellis plots
   - sub-plots conditional on categorical variables
-  - shipped with R (use `library(lattice)`)
+  - shipped with R (no need to install; just `library(lattice)`)
 - `ggplot2`: Grammar of Graphics
   - a truly masterpiece
   - amazing abstraction
@@ -426,9 +428,11 @@ Graphics are not as easy as you might have imagined
 
 - avoid pie charts (why?)
 - avoid 3D plots (what?!)
-  - unless it is interactive (e.g. the `rgl` package)
+  - unless they are interactive (e.g. the `rgl` package)
   - an alternative is the contour plot
-- consider color-blinded people
+- consider color-blind people
+- The Elements of Graphing Data (William S Cleveland)
+  - order of precision (length good; angle bad; ...)
 
 !SLIDE middle
 
@@ -612,6 +616,29 @@ for (k in 1:10) {
     j = cos(sin(k) * k^2) + 3
     print(j - 5)
 } 
+```
+
+!SLIDE
+
+# Debugging
+
+The function `debug` can be used to debug a function.
+
+``` ruby
+f = function(x) {
+    m = length(x)
+    x[is.na(x)] = mean(x, na.rm = TRUE)  # impute by mean
+    s = sum(x^2)  # sum of squares
+    s
+}
+f(c(1, NA, 2))
+
+## begin to debug the function now
+debug(f)
+
+f(c(1, NA, 2))
+
+undebug(f)
 ```
 
 !SLIDE
