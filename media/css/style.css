@@ -45,8 +45,4 @@ h1{font-family:"Cuprum",sans-serif;font-size:1.6em;color:#000;}
 h2{font-family:"Cuprum",sans-serif;font-size:1.4em;color:#111;}
 h3{font-family:"Cuprum",sans-serif;font-size:1.2em;color:#222;}
 h4{font-family:"Cuprum",sans-serif;font-size:1em;color:#333;}
-#dsq-global-toolbar,#dsq-like-tooltip,#dsq-sort-by,.dsq-comment-moderate{display:none;}
-.dsq-comment-header{border: none !important;background:none !important;}
-#dsq-footer{display:none;}
-li[id*='dsq-like-']{display: none;} 
 .gist{font-size: 12px;line-height:1.6;}
