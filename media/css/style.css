@@ -45,6 +45,6 @@ h1{font-family:"Cuprum",sans-serif;font-size:1.6em;color:#000;}
 h2{font-family:"Cuprum",sans-serif;font-size:1.4em;color:#111;}
 h3{font-family:"Cuprum",sans-serif;font-size:1.2em;color:#222;}
 h4{font-family:"Cuprum",sans-serif;font-size:1em;color:#333;}
-pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;}
-code{background-color:#F7F7F7;font-size:13px;}
+pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:13px;}
+code{background-color:#F7F7F7;}
 .gist{font-size: 12px;line-height:1.6;}
