@@ -281,6 +281,7 @@ padding:8px;
 pre code {
 background-color:transparent;
 padding:0;
+border: none;
 }
 
 .lit {
