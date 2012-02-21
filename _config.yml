@@ -1,3 +1,2 @@
 markdown: rdiscount 
-exclude: [ slides ]
 
