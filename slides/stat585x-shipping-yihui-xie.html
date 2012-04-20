@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+  <meta name="author" content="Yihui Xie" />
+  <title>Voyages of Sinbad the Sailor</title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+<style>
+  html { background-color: black; }
+  body { background-color: white; border-radius: 12px}
+  /* A section is a slide. It's size is 800x600, and this will never change */
+  section {
+      font-family: 'Oswald', arial, serif;
+      font-size: 20pt;
+    }
+  address, blockquote, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, ol, p, pre, table, ul, dl { padding: 10px 20px 10px 20px; }
+  h1, h2, h3 {
+    text-align: center;
+    margin: 10pt 10pt 20pt 10pt;
+  }
+  ul, ol {
+    margin: 10px 10px 10px 50px;
+  }
+  section.titleslide h1 { margin-top: 200px; }
+  h1.title { margin-top: 150px; }
+  h1 { font-size: 180%; }
+  h2 { font-size: 120%; }
+  h3 { font-size: 100%; }
+  q { quotes: "“" "”" "‘" "’"; }
+  blockquote, q {
+    display: block;
+    width: 90%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    padding: 50px;
+  }
+
+  /* Figures are displayed full-page, with the caption on
+     top of the image/video */
+  figure {
+    background-color: black;
+    text-align: center;
+  }
+  img {
+    max-width: 100%;
+  }
+  figcaption {
+    margin: 70px;
+  }
+  pre {
+    max-width: 100%;
+    max-height: 380px;
+    overflow: auto;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+  }
+
+  /* Transition effect */
+  /* Feel free to change the transition effect for original
+     animations. See here:
+     https://developer.mozilla.org/en/CSS/CSS_transitions
+     How to use CSS3 Transitions: */
+  section {
+      -moz-transition: left 400ms linear 0s;
+      -webkit-transition: left 400ms linear 0s;
+      -ms-transition: left 400ms linear 0s;
+      transition: left 400ms linear 0s;
+  }
+
+  /* Before */
+  section { left: -150%; }
+  /* Now */
+  section[aria-selected] { left: 0; }
+  /* After */
+  section[aria-selected] ~ section { left: +150%; }
+
+  /* Incremental elements */
+
+  /* By default, visible */
+  .incremental > * { opacity: 1; }
+
+  /* The current item */
+  .incremental > *[aria-selected] { color: red; opacity: 1; }
+
+  /* The items to-be-selected */
+  .incremental > *[aria-selected] ~ * { opacity: 0.2; }
+</style>
+</head>
+<body>
+<section>
+  <h1 class="title">Voyages of Sinbad the Sailor</h1>
+  <h2 class="author">Yihui Xie</h2>
+  <h3 class="date">2012/04/23</h3>
+</section>
+<section class="slide level1" id="data-extraction">
+<h1 id="data-extraction">Data extraction</h1>
+<figure>
+<img src="http://i.imgur.com/wAhOy.jpg" alt="Voyages of Sinbad the Sailor"><figcaption>Voyages of Sinbad the Sailor</figcaption>
+</figure>
+</section>
+<section class="slide level1" id="data-cleaning">
+<h1 id="data-cleaning">Data cleaning</h1>
+<figure>
+<img src="http://i.imgur.com/TA7rp.jpg" alt="Voyages of Sinbad the Sailor"><figcaption>Voyages of Sinbad the Sailor</figcaption>
+</figure>
+</section>
+<section class="slide level1" id="explore-the-treasure-island">
+<h1 id="explore-the-treasure-island">Explore the Treasure Island</h1>
+<figure>
+<img src="http://i.imgur.com/aisEo.jpg" alt="Treasure Island"><figcaption>Treasure Island</figcaption>
+</figure>
+</section>
+<section class="slide level1" id="section">
+<blockquote>
+<p>The existence of abundant meteorological data from logbooks of different European countries constitutes a common and invaluable heritage of the most outstanding scientific interest. The analysis of the logbooks content will contribute to characterise climate during XVIII th and XIX th centuries and to asses climate change.</p>
+<p>http://www.ucm.es/info/cliwoc/</p>
+</blockquote>
+</section>
+<section class="slide level1" id="the-data">
+<h1 id="the-data">The data</h1>
+<ul class="incremental">
+<li>Climatological Database for the World's Oceans 1750-1850</li>
+<li>available at <a href="http://www.ucm.es/info/cliwoc/cliwoc15.htm"><code class="url">http://www.ucm.es/info/cliwoc/cliwoc15.htm</code></a></li>
+<li>fixed width + semicolon separated values</li>
+</ul>
+</section>
+<section class="slide level1" id="sample-data">
+<h1 id="sample-data">Sample data</h1>
+<pre><code>1790 424                0106    10     1446ES                                                               99 0 MNM;Archivo Museo Naval Madrid;Madrid;Spain;;;;;MS. 204;Spanish;;;EL FERROL;RIO DE LA PLATA;FRAGATA;;;GREGORIO DE JOSE Y LLAÑOS;ALFEREZ DE FRAGATA;;;;;Unknown;MEDICION Y DATOS DEL MEDIODIA MENOS DESCRIPTORES QUE SUELEN SER DEL ANOCHECER;Diario de navegación desde El Ferrol al Río de la Plata del alférez de fragata don Gregorio de José y Llaños hecho en la fragata Santa Perpetua del mando del cap. José Postillo desde el 1-2-1774. SIGUEN LA CARTA HOLANDESA;Unknown;Unknown;DESCONOCIDO;;;360 degrees;17740201;;;;;;;;48.00;;;;0;;;;;;;;;;;;;SSE;SSE;CALMOSO;;CALMOSO;;HORIZONTES CLAROS;;;;;;0;0;0;0;0;0;0;ALGO PICADA DEL VIENTO;;;;;;;;;;;0;;0;;0;;0;;0;;0;0;;;0
+1790 7 31700-1518 28258 0106    10      926ES 1225123                                                       99 0 MNM;Archivo Museo Naval Madrid;Madrid;Spain;;;;;MS. 204;Spanish;;;EL FERROL;RIO DE LA PLATA;FRAGATA;;;GREGORIO DE JOSE Y LLAÑOS;ALFEREZ DE FRAGATA;;;;;Unknown;MEDICION Y DATOS DEL MEDIODIA MENOS DESCRIPTORES QUE SUELEN SER DEL ANOCHECER;Diario de navegación desde El Ferrol al Río de la Plata del alférez de fragata don Gregorio de José y Llaños hecho en la fragata Santa Perpetua del mando del cap. José Postillo desde el 1-2-1774. SIGUEN LA CARTA HOLANDESA;Unknown;Unknown;DESCONOCIDO;;;360 degrees;17740201;;;;;;;;;;;;0;;;;;;;;;;;;;NO1/4N;NO 1/4 N;BONANCIBLE;;BONANCIBLE;;HORIZONTES CARGADOS. POR LA NOCHE EMPEZO A RELAMPAGUEAR MUY A MENUDO Y CON MUCHA VIVEZA. A LAS 3:00 ENTRO UNA NUBE MUY HORRIBLE Y NEGRA POR EL SO Y LO;;;;;;0;0;0;0;0;0;0;LLANA;;;;;;;;;;;0;;0;;0;;0;;0;;0;0;;;0</code></pre>
+</section>
+<section class="slide level1" id="processing-text-data-in-r">
+<h1 id="processing-text-data-in-r">Processing text data in R</h1>
+<ul class="incremental">
+<li>brutal force: <code>substring()</code></li>
+<li>smarter: <code>read.fwf()</code></li>
+<li>too slow!!</li>
+</ul>
+</section>
+<section class="slide level1" id="but-r-is-sweet-in-web-scraping">
+<h1 id="but-r-is-sweet-in-web-scraping">But R is sweet in web scraping</h1>
+<ul class="incremental">
+<li>variable descriptions at <a href="http://www.ucm.es/info/cliwoc/content/CLIWOC15all.htm"><code class="url">http://www.ucm.es/info/cliwoc/content/CLIWOC15all.htm</code></a></li>
+<li>we can easily get the widths of variables to read the first part of the data</li>
+</ul>
+</section>
+<section class="slide level1" id="scrape-the-data-description">
+<h1 id="scrape-the-data-description">Scrape the data description</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(XML)
+res = <span class="kw">readHTMLTable</span>(<span class="st">&quot;http://www.ucm.es/info/cliwoc/content/CLIWOC15all.htm&quot;</span>, 
+    <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
+<span class="kw">head</span>(res[[<span class="dv">1</span>]][, -<span class="dv">5</span>])</code></pre>
+<pre class="text"><code>##         V1    V2  V3     V4
+## 1 Variable Start End Format
+## 2       YR     1   4     A4
+## 3       MO     5   6     A2
+## 4       DY     7   8     A2
+## 5       HR     9  12     A4
+## 6      LAT    13  17     A5</code></pre>
+</section>
+<section class="slide level1" id="field-widths">
+<h1 id="field-widths">Field widths</h1>
+<pre class="sourceCode r"><code class="sourceCode r">res[[<span class="dv">1</span>]] = res[[<span class="dv">1</span>]][-<span class="dv">1</span>, ]  <span class="co"># remove header</span>
+<span class="co"># start and stop positions are in the</span>
+<span class="co"># 1st table</span>
+s1 = <span class="kw">as.integer</span>(res[[<span class="dv">1</span>]][, <span class="dv">2</span>])
+s2 = <span class="kw">as.integer</span>(res[[<span class="dv">1</span>]][, <span class="dv">3</span>])
+<span class="co"># field widths</span>
+s2 - s1 + <span class="dv">1</span></code></pre>
+<pre class="text"><code>##  [1] 4 2 2 4 5 6 2 1 1 1 1 1 2 2 9 2 1 3
+## [19] 1 3 1 2 2 1 5 1 3 1 4 1 4 1 4 2 4 1
+## [37] 1 1 1 1 1 1 2 2 2 2 2 2 2 2 1</code></pre>
+</section>
+<section class="slide level1" id="variable-names">
+<h1 id="variable-names">Variable names</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># all variable names</span>
+nms = <span class="kw">tolower</span>(<span class="kw">c</span>(res[[<span class="dv">1</span>]][, <span class="dv">1</span>], 
+    res[[<span class="dv">2</span>]][-<span class="dv">1</span>, <span class="dv">1</span>]))
+<span class="kw">head</span>(nms, <span class="dv">30</span>)</code></pre>
+<pre class="text"><code>##  [1] &quot;yr&quot;   &quot;mo&quot;   &quot;dy&quot;   &quot;hr&quot;   &quot;lat&quot; 
+##  [6] &quot;lon&quot;  &quot;im&quot;   &quot;attc&quot; &quot;ti&quot;   &quot;li&quot;  
+## [11] &quot;ds&quot;   &quot;vs&quot;   &quot;nid&quot;  &quot;ii&quot;   &quot;id&quot;  
+## [16] &quot;c1&quot;   &quot;di&quot;   &quot;d&quot;    &quot;wi&quot;   &quot;w&quot;   
+## [21] &quot;vi&quot;   &quot;vv&quot;   &quot;ww&quot;   &quot;w1&quot;   &quot;slp&quot; 
+## [26] &quot;a&quot;    &quot;ppp&quot;  &quot;it&quot;   &quot;at&quot;   &quot;wbti&quot;</code></pre>
+</section>
+<section class="slide level1" id="gawk-is-awesome">
+<h1 id="gawk-is-awesome">(G)Awk is awesome</h1>
+<pre class="sourceCode awk"><code class="sourceCode awk"><span class="co"># save to fix2pip.awk</span>
+<span class="st">BEGIN</span>  <span class="kw">{</span>
+  FIELDWIDTHS = <span class="st">&quot;4 2 2 4 5 6 2 1 1 1 1 1&quot;</span> \
+    <span class="st">&quot; 2 2 9 2 1 3 1 3 1 2 2 1 5 1 3 1 4&quot;</span> \
+    <span class="st">&quot; 1 4 1 4 2 4 1 1 1 1 1 1 1 2 2 2 2&quot;</span> \
+    <span class="st">&quot; 2 2 2 2 1 10000&quot;</span> 
+<span class="kw">}</span>
+<span class="kw">{</span>
+  <span class="kw">for</span> (i=<span class="dv">1</span>; i &lt;= <span class="dt">NF</span>; i++) <span class="kw">{</span>
+    <span class="kw">if</span> (i &lt; <span class="dt">NF</span>) <span class="kw">{</span>
+      <span class="fu">sub</span>(/^[ ]+/, <span class="st">&quot;&quot;</span>, <span class="ot">$i</span>)
+      <span class="fu">sub</span>(/[ ]+$/, <span class="st">&quot;&quot;</span>, <span class="ot">$i</span>)
+      <span class="kw">printf</span> <span class="st">&quot;%s|&quot;</span>, <span class="ot">$i</span>
+    <span class="kw">}</span> <span class="kw">else</span> <span class="kw">{</span>
+      <span class="fu">gsub</span>(<span class="st">&quot;;&quot;</span>, <span class="st">&quot;|&quot;</span>, <span class="ot">$i</span>)
+      <span class="kw">printf</span> <span class="st">&quot;%s\n&quot;</span>, <span class="ot">$i</span>
+    <span class="kw">}</span>
+  <span class="kw">}</span>
+<span class="kw">}</span></code></pre>
+</section>
+<section class="slide level1" id="neat-awk-one-liners">
+<h1 id="neat-awk-one-liners">Neat Awk One-liners</h1>
+<ul class="incremental">
+<li><a href="http://www.pement.org/awk/awk1line.txt"><code class="url">http://www.pement.org/awk/awk1line.txt</code></a></li>
+<li>what does <code>awk NF</code> mean?</li>
+</ul>
+</section>
+<section class="slide level1" id="run-gawk-and-r">
+<h1 id="run-gawk-and-r">Run gawk and R</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">gawk</span> -f fix2pipe.awk CLIWOC15 <span class="kw">&gt;</span> CLIWOC15pipe</code></pre>
+<p>But text data is really awful! (lack of rigorous field separators)</p>
+<pre class="sourceCode r"><code class="sourceCode r">df = <span class="kw">read.table</span>(<span class="st">&quot;CLIWOC15pipe&quot;</span>, 
+    <span class="dt">sep =</span> <span class="st">&quot;|&quot;</span>, <span class="dt">fill =</span> <span class="ot">TRUE</span>)</code></pre>
+</section>
+<section class="slide level1" id="i-have-to-turn-to-ms-products">
+<h1 id="i-have-to-turn-to-ms-products">I have to turn to MS products</h1>
+<ul class="incremental">
+<li>MS Access 2000 database</li>
+<li><p>exported to CSV using <code>mdbtools</code></p>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> http://www.knmi.nl/cliwoc/download/CLIWOC15_2000.zip
+<span class="kw">unzip</span> CLIWOC15_2000.zip
+mdb-export CLIWOC15_2000.mdb CLIWOC15 <span class="kw">&gt;</span> CLIWOC15.csv
+<span class="kw">bzip2</span> CLIWOC15.csv</code></pre>
+<p>Now we get a compressed CSV file <code>CLIWOC15.csv.bz2</code> (one copy at <a href="http://xie.public.iastate.edu/CLIWOC15full.csv.bz2"><code class="url">http://xie.public.iastate.edu/CLIWOC15full.csv.bz2</code></a>)</p></li>
+</ul>
+</section>
+<section class="slide level1" id="yeah-csv">
+<h1 id="yeah-csv">Yeah, CSV!</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(df &lt;- <span class="kw">read.csv</span>(<span class="st">&quot;CLIWOC15.csv.bz2&quot;</span>))</code></pre>
+<pre class="text"><code>##    user  system elapsed 
+##  49.979   0.756  50.888 </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">object.size</span>(df), <span class="dt">unit =</span> <span class="st">&quot;Mb&quot;</span>)</code></pre>
+<pre class="text"><code>## 190.1 Mb</code></pre>
+</section>
+<section class="slide level1" id="clean-the-data-a-little-bit">
+<h1 id="clean-the-data-a-little-bit">Clean the data a little bit</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(df$Lat3)</code></pre>
+<pre class="text"><code>##    Min. 1st Qu.  Median    Mean 3rd Qu. 
+##    -129     -22       7       6      34 
+##    Max.    NA&#39;s 
+##      80   22297 </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df$Lat3 &lt; -<span class="dv">90</span>)  <span class="co"># records lower than -90</span></code></pre>
+<pre class="text"><code>## 
+##  FALSE   TRUE 
+## 257980      3 </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df = <span class="kw">subset</span>(df, Lat3 &gt;= -<span class="dv">90</span> &amp; 
+    Year &gt; <span class="dv">1700</span>)</code></pre>
+</section>
+<section class="slide level1" id="traces-of-captain-cook-and-others">
+<h1 id="traces-of-captain-cook-and-others">Traces of Captain Cook (and others)</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(maps)
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))
+<span class="kw">map</span>(<span class="dt">col =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">170</span>, 
+    <span class="dv">170</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">75</span>, <span class="dv">80</span>))
+<span class="kw">with</span>(df, <span class="kw">points</span>(Lon3, Lat3, <span class="dt">pch =</span> <span class="st">&quot;.&quot;</span>, 
+    <span class="dt">col =</span> <span class="kw">rgb</span>(<span class="fl">0.18</span>, <span class="fl">0.55</span>, <span class="fl">0.34</span>, <span class="fl">0.1</span>)))</code></pre>
+</section>
+<section class="slide level1" id="all-possible-locations">
+<h1 id="all-possible-locations">All possible locations</h1>
+<figure>
+<img src="http://i.imgur.com/CiY3K.png" alt="plot of chunk map-all-plot"><figcaption>plot of chunk map-all-plot</figcaption>
+</figure>
+</section>
+<section class="slide level1" id="animations">
+<h1 id="animations">Animations</h1>
+<pre class="sourceCode r"><code class="sourceCode r">df$Date = <span class="kw">with</span>(df, <span class="kw">as.Date</span>(<span class="kw">sprintf</span>(<span class="st">&quot;%s-%s-%s&quot;</span>, 
+    Year, Month, Day)))
+<span class="co"># d0 = min(df$Date, na.rm = TRUE)</span>
+d0 = <span class="kw">as.Date</span>(<span class="st">&quot;1749-01-01&quot;</span>)
+d1 = <span class="kw">max</span>(df$Date, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
+<span class="co"># d1 = d0 + 1000</span>
+<span class="kw">library</span>(scales)
+df$Nationality = <span class="kw">factor</span>(<span class="kw">gsub</span>(<span class="st">&quot;^ *| *$&quot;</span>, 
+    <span class="st">&quot;&quot;</span>, df$Nationality))
+nat = <span class="kw">levels</span>(df$Nationality)
+cols = <span class="kw">brewer_pal</span>(<span class="st">&quot;qual&quot;</span>)(<span class="kw">length</span>(nat))
+colvec = <span class="kw">alpha</span>(<span class="kw">dscale</span>(df$Nationality, 
+    <span class="kw">brewer_pal</span>(<span class="st">&quot;qual&quot;</span>)), <span class="fl">0.7</span>)
+<span class="co"># x11(width = 10, height = 6);</span>
+<span class="co"># dev.control(&#39;inhibit&#39;)</span>
+n = <span class="dv">14</span>  <span class="co"># traces of 2 weeks</span>
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))
+<span class="kw">with</span>(df, while (d0 + n &lt;= d1) {
+    <span class="kw">dev.hold</span>()
+    <span class="kw">map</span>(<span class="dt">col =</span> <span class="st">&quot;darkgray&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">170</span>, 
+        <span class="dv">170</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(-<span class="dv">75</span>, <span class="dv">80</span>))
+    idx = Date &gt;= d0 &amp; Date &lt; d0 + n
+    <span class="kw">points</span>(Lon3[idx], Lat3[idx], <span class="dt">pch =</span> <span class="dv">20</span>, 
+        <span class="dt">col =</span> colvec[idx])
+    <span class="kw">text</span>(<span class="dv">120</span>, -<span class="dv">56</span>, d0 + n, <span class="dt">cex =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;darkgray&quot;</span>)
+    <span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, nat, <span class="dt">fill =</span> cols, 
+        <span class="dt">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>, <span class="dt">text.col =</span> <span class="st">&quot;darkgray&quot;</span>)
+    <span class="kw">dev.flush</span>()
+    d0 = d0 + <span class="dv">1</span>
+})</code></pre>
+</section>
+<section class="slide level1" id="a-short-video">
+<h1 id="a-short-video">A short video</h1>
+<iframe src="http://player.vimeo.com/video/40619253?title=0&amp;byline=0&amp;portrait=0" width="800" height="460" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+</section>
+<section class="slide level1" id="acknowledgement">
+<h1 id="acknowledgement">Acknowledgement</h1>
+<ul class="incremental">
+<li>animation ideas are not mine; they are from <a href="http://sappingattention.blogspot.co.uk/2012/04/visualizing-ocean-shipping.html">Ben Schmidt's blog</a></li>
+<li>big thanks to people behind the CLIWOC project putting together the data</li>
+</ul>
+</section>
+<section class="slide level1" id="tools">
+<h1 id="tools">Tools</h1>
+<p>The slides were made by the R package <a href="http://yihui.name/knitr/"><strong>knitr</strong></a> and a great document converter <a href="http://johnmacfarlane.net/pandoc">pandoc</a> which converted the markdown output from <strong>knitr</strong> to <a href="http://paulrouget.com/dzslides/">DZslides</a>. Markdown source at <a href="http://yihui.name/slides/stat585x-shipping-yihui-xie.Rmd"><code class="url">http://yihui.name/slides/stat585x-shipping-yihui-xie.Rmd</code></a>, and you can compile it by the function <code>knit()</code> in <strong>knitr</strong>.</p>
+</section>
+<section class="slide level1" id="long-live-the-rr">
+<h1 id="long-live-the-rr">Long live the RR!</h1>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre>
+<pre class="text"><code>## R version 2.14.2 (2012-02-29)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## 
+## locale:
+##  [1] LC_CTYPE=en_US.UTF-8      
+##  [2] LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8       
+##  [4] LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8   
+##  [6] LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=C                
+##  [8] LC_NAME=C                 
+##  [9] LC_ADDRESS=C              
+## [10] LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8
+## [12] LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices
+## [4] utils     datasets  methods  
+## [7] base     
+## 
+## other attached packages:
+## [1] XML_3.93-0   knitr_0.4.11
+## 
+## loaded via a namespace (and not attached):
+##  [1] codetools_0.2-8 digest_0.5.2   
+##  [3] evaluate_0.4.2  formatR_0.4.1  
+##  [5] highlight_0.3.1 parser_0.0-14  
+##  [7] plyr_1.7.1      Rcpp_0.9.10    
+##  [9] stringr_0.6     tools_2.14.2   </code></pre>
+</section>
+<!-- {{{{ dzslides core
+#
+#
+#     __  __  __       .  __   ___  __
+#    |  \  / /__` |    | |  \ |__  /__`
+#    |__/ /_ .__/ |___ | |__/ |___ .__/ core :€
+#
+#
+# The following block of code is not supposed to be edited.
+# But if you want to change the behavior of these slides,
+# feel free to hack it!
+#
+-->
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; }
+  details { display: none; }
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto; }
+  html { overflow: hidden; }
+  body { display: none; }
+  body.loaded { display: block; }
+  .incremental {visibility: hidden; }
+  .incremental[active] {visibility: visible; }
+</style>
+
+<script>
+  var Dz = {
+    remoteWindows: [],
+    idx: -1,
+    step: 0,
+    slides: null,
+    params: {
+      autoplay: "1"
+    }
+  };
+
+  Dz.init = function() {
+    document.body.className = "loaded";
+    this.slides = $$("body > section");
+    this.setupParams();
+    this.onhashchange();
+    this.setupTouchEvents();
+    this.onresize();
+  }
+  
+  Dz.setupParams = function() {
+    var p = window.location.search.substr(1).split('&');
+    p.forEach(function(e, i, a) {
+      var keyVal = e.split('=');
+      Dz.params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+    });
+  }
+
+  Dz.onkeydown = function(aEvent) {
+    // Don't intercept keyboard shortcuts
+    if (aEvent.altKey
+      || aEvent.ctrlKey
+      || aEvent.metaKey
+      || aEvent.shiftKey) {
+      return;
+    }
+    if ( aEvent.keyCode == 37 // left arrow
+      || aEvent.keyCode == 38 // up arrow
+      || aEvent.keyCode == 33 // page up
+    ) {
+      aEvent.preventDefault();
+      this.back();
+    }
+    if ( aEvent.keyCode == 39 // right arrow
+      || aEvent.keyCode == 40 // down arrow
+      || aEvent.keyCode == 34 // page down
+    ) {
+      aEvent.preventDefault();
+      this.forward();
+    }
+    if (aEvent.keyCode == 35) { // end
+      aEvent.preventDefault();
+      this.goEnd();
+    }
+    if (aEvent.keyCode == 36) { // home
+      aEvent.preventDefault();
+      this.goStart();
+    }
+    if (aEvent.keyCode == 32) { // space
+      aEvent.preventDefault();
+      this.toggleContent();
+    }
+  }
+
+  /* Touch Events */
+
+  Dz.setupTouchEvents = function() {
+    var orgX, newX;
+    var tracking = false;
+
+    var db = document.body;
+    db.addEventListener("touchstart", start.bind(this), false);
+    db.addEventListener("touchmove", move.bind(this), false);
+
+    function start(aEvent) {
+      aEvent.preventDefault();
+      tracking = true;
+      orgX = aEvent.changedTouches[0].pageX;
+    }
+
+    function move(aEvent) {
+      if (!tracking) return;
+      newX = aEvent.changedTouches[0].pageX;
+      if (orgX - newX > 100) {
+        tracking = false;
+        this.forward();
+      } else {
+        if (orgX - newX < -100) {
+          tracking = false;
+          this.back();
+        }
+      }
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  Dz.onresize = function() {
+    var db = document.body;
+    var sx = db.clientWidth / window.innerWidth;
+    var sy = db.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+
+    db.style.MozTransform = transform;
+    db.style.WebkitTransform = transform;
+    db.style.OTransform = transform;
+    db.style.msTransform = transform;
+    db.style.transform = transform;
+  }
+
+
+  Dz.getDetails = function(aIdx) {
+    var s = $("section:nth-of-type(" + aIdx + ")");
+    var d = s.$("details");
+    return d ? d.innerHTML : "";
+  }
+
+  Dz.onmessage = function(aEvent) {
+    var argv = aEvent.data.split(" "), argc = argv.length;
+    argv.forEach(function(e, i, a) { a[i] = decodeURIComponent(e) });
+    var win = aEvent.source;
+    if (argv[0] === "REGISTER" && argc === 1) {
+      this.remoteWindows.push(win);
+      this.postMsg(win, "REGISTERED", document.title, this.slides.length);
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+      return;
+    }
+    if (argv[0] === "BACK" && argc === 1)
+      this.back();
+    if (argv[0] === "FORWARD" && argc === 1)
+      this.forward();
+    if (argv[0] === "START" && argc === 1)
+      this.goStart();
+    if (argv[0] === "END" && argc === 1)
+      this.goEnd();
+    if (argv[0] === "TOGGLE_CONTENT" && argc === 1)
+      this.toggleContent();
+    if (argv[0] === "SET_CURSOR" && argc === 2)
+      window.location.hash = "#" + argv[1];
+    if (argv[0] === "GET_CURSOR" && argc === 1)
+      this.postMsg(win, "CURSOR", this.idx + "." + this.step);
+    if (argv[0] === "GET_NOTES" && argc === 1)
+      this.postMsg(win, "NOTES", this.getDetails(this.idx));
+  }
+
+  Dz.toggleContent = function() {
+    // If a Video is present in this new slide, play it.
+    // If a Video is present in the previous slide, stop it.
+    var s = $("section[aria-selected]");
+    if (s) {
+      var video = s.$("video");
+      if (video) {
+        if (video.ended || video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    }
+  }
+
+  Dz.setCursor = function(aIdx, aStep) {
+    // If the user change the slide number in the URL bar, jump
+    // to this slide.
+    aStep = (aStep != 0 && typeof aStep !== "undefined") ? "." + aStep : ".0";
+    window.location.hash = "#" + aIdx + aStep;
+  }
+
+  Dz.onhashchange = function() {
+    var cursor = window.location.hash.split("#"),
+        newidx = 1,
+        newstep = 0;
+    if (cursor.length == 2) {
+      newidx = ~~cursor[1].split(".")[0];
+      newstep = ~~cursor[1].split(".")[1];
+      if (newstep > Dz.slides[newidx - 1].$$('.incremental > *').length) {
+        newstep = 0;
+        newidx++;
+      }
+    }
+    if (newidx != this.idx) {
+      this.setSlide(newidx);
+    }
+    if (newstep != this.step) {
+      this.setIncremental(newstep);
+    }
+    for (var i = 0; i < this.remoteWindows.length; i++) {
+      this.postMsg(this.remoteWindows[i], "CURSOR", this.idx + "." + this.step);
+    }
+  }
+
+  Dz.back = function() {
+    if (this.idx == 1 && this.step == 0) {
+      return;
+    }
+    if (this.step == 0) {
+      this.setCursor(this.idx - 1,
+                     this.slides[this.idx - 2].$$('.incremental > *').length);
+    } else {
+      this.setCursor(this.idx, this.step - 1);
+    }
+  }
+
+  Dz.forward = function() {
+    if (this.idx >= this.slides.length &&
+        this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+        return;
+    }
+    if (this.step >= this.slides[this.idx - 1].$$('.incremental > *').length) {
+      this.setCursor(this.idx + 1, 0);
+    } else {
+      this.setCursor(this.idx, this.step + 1);
+    }
+  }
+
+  Dz.goStart = function() {
+    this.setCursor(1, 0);
+  }
+
+  Dz.goEnd = function() {
+    var lastIdx = this.slides.length;
+    var lastStep = this.slides[lastIdx - 1].$$('.incremental > *').length;
+    this.setCursor(lastIdx, lastStep);
+  }
+
+  Dz.setSlide = function(aIdx) {
+    this.idx = aIdx;
+    var old = $("section[aria-selected]");
+    var next = $("section:nth-of-type("+ this.idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.$("video");
+      if (video) {
+        video.pause();
+      }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.$("video");
+      if (video && !!+this.params.autoplay) {
+        video.play();
+      }
+    } else {
+      // That should not happen
+      this.idx = -1;
+      // console.warn("Slide doesn't exist.");
+    }
+  }
+
+  Dz.setIncremental = function(aStep) {
+    this.step = aStep;
+    var old = this.slides[this.idx - 1].$('.incremental > *[aria-selected]');
+    if (old) {
+      old.removeAttribute('aria-selected');
+    }
+    var incrementals = this.slides[this.idx - 1].$$('.incremental');
+    if (this.step <= 0) {
+      incrementals.forEach(function(aNode) {
+        aNode.removeAttribute('active');
+      });
+      return;
+    }
+    var next = this.slides[this.idx - 1].$$('.incremental > *')[this.step - 1];
+    if (next) {
+      next.setAttribute('aria-selected', true);
+      next.parentNode.setAttribute('active', true);
+      var found = false;
+      incrementals.forEach(function(aNode) {
+        if (aNode != next.parentNode)
+          if (found)
+            aNode.removeAttribute('active');
+          else
+            aNode.setAttribute('active', true);
+        else
+          found = true;
+      });
+    } else {
+      setCursor(this.idx, 0);
+    }
+    return next;
+  }
+  
+  Dz.postMsg = function(aWin, aMsg) { // [arg0, [arg1...]]
+    aMsg = [aMsg];
+    for (var i = 2; i < arguments.length; i++)
+      aMsg.push(encodeURIComponent(arguments[i]));
+    aWin.postMessage(aMsg.join(" "), "*");
+  }
+
+  window.onload = Dz.init.bind(Dz);
+  window.onkeydown = Dz.onkeydown.bind(Dz);
+  window.onresize = Dz.onresize.bind(Dz);
+  window.onhashchange = Dz.onhashchange.bind(Dz);
+  window.onmessage = Dz.onmessage.bind(Dz);
+</script>
+
+
+<script> // Helpers
+  if (!Function.prototype.bind) {
+    Function.prototype.bind = function (oThis) {
+
+      // closest thing possible to the ECMAScript 5 internal IsCallable
+      // function 
+      if (typeof this !== "function")
+      throw new TypeError(
+        "Function.prototype.bind - what is trying to be fBound is not callable"
+      );
+
+      var aArgs = Array.prototype.slice.call(arguments, 1),
+          fToBind = this,
+          fNOP = function () {},
+          fBound = function () {
+            return fToBind.apply( this instanceof fNOP ? this : oThis || window,
+                   aArgs.concat(Array.prototype.slice.call(arguments)));
+          };
+
+      fNOP.prototype = this.prototype;
+      fBound.prototype = new fNOP();
+
+      return fBound;
+    };
+  }
+
+  var $ = (HTMLElement.prototype.$ = function(aQuery) {
+    return this.querySelector(aQuery);
+  }).bind(document);
+
+  var $$ = (HTMLElement.prototype.$$ = function(aQuery) {
+    return this.querySelectorAll(aQuery);
+  }).bind(document);
+
+  NodeList.prototype.forEach = function(fun) {
+    if (typeof fun !== "function") throw new TypeError();
+    for (var i = 0; i < this.length; i++) {
+      fun.call(this, this[i]);
+    }
+  }
+
+</script>
+<!-- vim: set fdm=marker: }}} -->
+</body>
+</html>
