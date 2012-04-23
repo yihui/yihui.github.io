@@ -6,7 +6,7 @@
 opts_chunk$set(cache=TRUE)
 opts_knit$set(upload.fun = imgur_upload)
 options(width=40)
-read_chunk('shipping.R')
+read_chunk('stat585x-shipping-yihui-xie.R')
 ```
 
 # Data extraction
