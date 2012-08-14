@@ -125,7 +125,7 @@ record_selector(Institution, data = qnrc)
 ## histogram: change binwidth
 data(flea, package = 'tourr')
 qflea = qdata(flea, color = species)
-qhist(tars1)
+qhist(tars1, data = qflea)
 
 
 ## density plot
