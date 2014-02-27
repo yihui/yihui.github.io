@@ -49,3 +49,8 @@ pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace
 code{background-color:#F7F7F7;}
 embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}
+@media print {
+  *{font-weight:normal;}
+  h1,h2,h3{font-weight:400;}
+  a{color:black;border-bottom:lightgray dotted 1px;}
+}
