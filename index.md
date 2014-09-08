@@ -5,8 +5,9 @@ avatar: yes
 
 I'm a software engineer working with [RStudio, Inc](http://www.rstudio.com).
 I got my PhD from the Department of Statistics, Iowa State University. My
-thesis was _Dynamic [Graphics](http://cranvas.org) and [Reporting](/knitr)
-for Statistics_, advised by [Di](http://dicook.public.iastate.edu) and
+[thesis](http://lib.dr.iastate.edu/etd/13518/) was _Dynamic
+[Graphics](http://cranvas.org) and [Reporting](/knitr) for Statistics_, advised
+by [Di](http://dicook.public.iastate.edu) and
 [Heike](http://hofmann.public.iastate.edu). I have been developing a few
 [R](http://www.r-project.org) packages either seriously or for
 [fun](http://cran.r-project.org/package=fun) (or both), such as
