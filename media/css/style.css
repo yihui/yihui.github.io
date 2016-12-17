@@ -9,9 +9,30 @@
 * |\.|._)._)
 * --------------------------------- */
 
-@import url(http://fonts.gmirror.org/css?family=Galdeano);
-@import url(http://fonts.gmirror.org/css?family=Electrolize);
-@import url(http://fonts.gmirror.org/css?family=Cuprum);
+@font-face {
+  font-family: 'Galdeano';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Galdeano Regular'), local('Galdeano-Regular'),
+       url('../fonts/galdeano-v6-latin-regular.woff2') format('woff2'),
+       url('../fonts/galdeano-v6-latin-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Electrolize';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Electrolize'), local('Electrolize-Regular'),
+       url('../fonts/electrolize-v5-latin-regular.woff2') format('woff2'),
+       url('../fonts/electrolize-v5-latin-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Cuprum';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cuprum'), local('Cuprum-Regular'),
+       url('../fonts/cuprum-v7-latin-regular.woff2') format('woff2'),
+       url('../fonts/cuprum-v7-latin-regular.woff') format('woff');
+}
 body{font-size:14px;font-family:"Galdeano","Hiragino Sans GB","Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;color:#000000;background-color:#ffffff;}
 *{padding:0;margin: 0;border:none;outline:none;}
 a{color:#dd0000;text-decoration:none;}
