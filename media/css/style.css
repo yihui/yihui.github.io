@@ -76,3 +76,4 @@ embed,object,iframe{display:block;margin:4px auto;}
   a{color:black;border-bottom:lightgray dotted 1px;}
 }
 ul{list-style-position:inherit;margin-left: 1em;}
+h2,h3{padding:.5em 0;}
