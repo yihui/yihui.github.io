@@ -1,59 +1,61 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <title>Yihui Xie | 谢益辉</title>
-  <meta name="author" content="Yihui Xie | 谢益辉"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="/media/css/home.css">
-  <style type="text/css">
-  html, body {
-    background-color: #F8F8F8;
-  }
-  .container > footer p , .postheader > a{
-    text-align: center;
-  }
-  .date {
-    text-align: center;
-    height: 30px;
-    color:#bfbfbf;
-    margin-bottom: 10px;
-  }
-  /* Specify class=linenums on a pre to get line numbering */
-  ol.linenums {
-    margin: 0 0 0 33px; /* IE indents via margin-left */
-  }
-  ol.linenums li {
-    padding-left: 12px;
-    color: #bebec5;
-    line-height: 18px;
-    text-shadow: 0 1px 0 #fff;
-  }
-  </style>
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-1988641-2']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.18"/>
+<title>Yihui Xie | 谢益辉</title>
+<meta property="og:title" content="Yihui Xie | 谢益辉">
+<meta property="og:type" content="website">
+<meta property="description" content="Personal website of Yihui Xie; 谢益辉的个人网站">
+<link rel="stylesheet" href="//yihui.name/css/fonts.css" media="all">
+<link rel="stylesheet" href="//yihui.name/css/main.css" media="all">
+<link rel="stylesheet" href="//yihui.name/css/custom.css">
+<script async src="https://use.fontawesome.com/32c3d13def.js"></script>
 </head>
 <body>
-  <div class="container">
-  <h1 class="sitename">Yihui Xie</h1>
-  <ul class="nav pills">
-  <li><a href="/">Home</a></li>
-  <li><a href="/cn/">Chinese</a></li>
-  <li><a href="/en/">English</a></li>
+<div class="wrapper">
+<header class="header">
+<nav class="nav">
+<a href="//yihui.name/" class="nav-logo">
+<img src="//yihui.name/images/logo.png" width="50" height="50" alt="Yihui Xie">
+</a>
+<ul class="nav-links">
+<li class=""><a href="//yihui.name/en/about/"> About </a></li>
+<li class=""><a href="//yihui.name/en/"> Blog </a></li>
+<li class=""><a href="//yihui.name/cn/about/"> 关于 </a></li>
+<li class=""><a href="//yihui.name/cn/"> 博客 </a></li>
 </ul>
-{% if page.avatar %} <p><img src="//i.imgur.com/mutvY.jpg" title="Yihui Xie" align="right" /></p> {% endif %}
+</nav>
+</header>
+<main class="content" role="main">
+<article class="article">
+<div class="article-content">
 {{ content }}
-<footer>
-  <p><small>Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a> on GitHub | Copyright 2005 - {{site.time | date:"%Y"}} by <a href="http://yihui.name">Yihui Xie</a> | <span class="label label-info">{{site.time | date:"%Y-%m-%d %H:%M:%S"}}</span></small></p>
+</div>
+</article>
+</main>
+<footer class="footer">
+<ul class="footer-links">
+<li><a href="https://github.com/yihui"><i class="fa fa-github" aria-hidden="true" title="Github"></i><span class="sr-only">Github</span></a></li>
+<li><a href="https://twitter.com/xieyihui"><i class="fa fa-twitter" aria-hidden="true" title="Twitter"></i><span class="sr-only">Twitter</span></a></li>
+<li><a href="http://weibo.com/yihuixie"><i class="fa fa-weibo" aria-hidden="true" title="新浪微博"></i><span class="sr-only">新浪微博</span></a></li>
+<li><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><i class="fa fa-cc" aria-hidden="true" title="Attribution-NonCommercial-ShareAlike 4.0 International"></i><span class="sr-only">Attribution-NonCommercial-ShareAlike 4.0 International</span></a></li>
+<li><a href="//yihui.name/"><i class="fa fa-copyright" aria-hidden="true" title="Copyright"></i> 2005 - 2017</a></li>
+</ul>
 </footer>
 </div>
+<script async src="//yihui.name/js/center-img.js"></script>
+<script async src="//yihui.name/js/right-quote.js"></script>
+<script async src="//yihui.name/js/no-highlight.js"></script>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1988641-2', 'auto');
+ga('send', 'pageview');
+</script>
 </body>
 </html>
